@@ -278,41 +278,6 @@ class _AiBarcodeScannerState extends State<AiBarcodeScanner> {
       ]);
     }
     return Scaffold(
-      appBar: widget.appBarBuilder?.call(context, controller) ??
-          AppBar(
-            backgroundColor: Colors.transparent,
-            foregroundColor: Colors.white,
-            elevation: 0,
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.cameraswitch_rounded),
-                onPressed: controller.switchCamera,
-              ),
-              IconButton(
-                icon: controller.torchEnabled
-                    ? const Icon(Icons.flashlight_off_rounded)
-                    : const Icon(Icons.flashlight_on_rounded),
-                onPressed: controller.toggleTorch,
-              ),
-              if (!widget.hideGalleryIcon)
-                GalleryButton.icon(
-                  onImagePick: widget.onImagePick,
-                  onDetect: widget.onDetect,
-                  validator: widget.validator,
-                  controller: controller,
-                  isSuccess: _isSuccess,
-                ),
-              ...?widget.actions,
-            ],
-          ),
-      extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
-      bottomSheet: widget.bottomSheetBuilder?.call(context, controller) ??
-          DraggableSheet(
-            title: widget.sheetTitle,
-            hideDragHandler: widget.hideSheetDragHandler,
-            hideTitle: widget.hideSheetTitle,
-            child: widget.sheetChild,
-          ),
       body: Stack(
         children: [
           MobileScanner(
